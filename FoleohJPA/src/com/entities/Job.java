@@ -32,5 +32,77 @@ public class Job {
 	@ManyToOne
 	@JoinColumn(name="User_Detail_id")
 	private UserDetail userDetail;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getYearStarted() {
+		return yearStarted;
+	}
+
+	public void setYearStarted(int yearStarted) {
+		this.yearStarted = yearStarted;
+	}
+
+	public int getYearEnded() {
+		return yearEnded;
+	}
+
+	public void setYearEnded(int yearEnded) {
+		this.yearEnded = yearEnded;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
 	
 }
