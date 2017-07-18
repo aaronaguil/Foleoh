@@ -1,9 +1,12 @@
 package com.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -14,6 +17,7 @@ import javax.persistence.Table;
 public class UserDetail {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
 	@Column(name="phone_number")
@@ -125,6 +129,16 @@ public class UserDetail {
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
 	}
+	
+	public void addProject(Project project){
+		if(projects == null){
+			projects = new ArrayList<Project>();
+			projects.add(project);
+		}
+		else{
+			projects.add(project);
+		}
+	}
 
 	public List<Job> getJobs() {
 		return jobs;
@@ -132,6 +146,16 @@ public class UserDetail {
 
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
+	}
+	
+	public void addJob(Job job){
+		if(jobs == null){
+			jobs = new ArrayList<Job>();
+			jobs.add(job);
+		}
+		else{
+			jobs.add(job);
+		}
 	}
 	
 	

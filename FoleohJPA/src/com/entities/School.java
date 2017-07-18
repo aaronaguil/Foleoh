@@ -1,9 +1,12 @@
 package com.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,6 +17,7 @@ import javax.persistence.OneToOne;
 public class School {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	
 	@Column(name="school_name")
@@ -63,6 +67,16 @@ public class School {
 	public void setLocations(List<Location> locations) {
 		this.locations = locations;
 	}
+	
+	public void addLocation(Location location){
+		if(locations == null){
+			locations = new ArrayList<Location>();
+			locations.add(location);
+		}
+		else{
+			locations.add(location);
+		}
+	}
 
 	public List<Review> getReviews() {
 		return reviews;
@@ -70,6 +84,16 @@ public class School {
 
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
+	}
+	
+	public void addReview(Review review){
+		if(reviews == null){
+			reviews = new ArrayList<Review>();
+			reviews.add(review);
+		}
+		else{
+			reviews.add(review);
+		}
 	}
 
 	public SchoolDetail getSchoolDetail() {

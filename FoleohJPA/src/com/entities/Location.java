@@ -1,8 +1,11 @@
 package com.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -12,6 +15,7 @@ import javax.persistence.ManyToOne;
 public class Location {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	
 	private String street;
@@ -98,6 +102,16 @@ public class Location {
 
 	public void setPrograms(List<Program> programs) {
 		this.programs = programs;
+	}
+	
+	public void addProgram(Program program){
+		if(programs == null){
+			programs = new ArrayList<Program>();
+			programs.add(program);
+		}
+		else{
+			programs.add(program);
+		}
 	}
 
 }

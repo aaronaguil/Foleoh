@@ -1,10 +1,13 @@
 package com.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -14,6 +17,7 @@ import javax.persistence.OneToOne;
 public class User {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	
 	private String username;
@@ -32,7 +36,7 @@ public class User {
 	private List<Review> reviews;
 	
 	@OneToMany(mappedBy="user")
-	private List<Comment> comment;
+	private List<Comment> comments;
 	
 	@OneToOne(mappedBy="user")
 	private UserDetail userDetail;
@@ -84,6 +88,16 @@ public class User {
 	public void setPrograms(List<Program> programs) {
 		this.programs = programs;
 	}
+	
+	public void addProgram(Program program){		
+		if(programs == null){
+			programs = new ArrayList<Program>();
+			programs.add(program);
+		}
+		else{
+			programs.add(program);
+		}
+	}
 
 	public List<Review> getReviews() {
 		return reviews;
@@ -92,13 +106,33 @@ public class User {
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
-
-	public List<Comment> getComment() {
-		return comment;
+	
+	public void addReview(Review review){
+		if(reviews == null){
+			reviews = new ArrayList<Review>();
+			reviews.add(review);
+		}
+		else{
+			reviews.add(review);
+		}
 	}
 
-	public void setComment(List<Comment> comment) {
-		this.comment = comment;
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+	
+	public void addComment(Comment comment){
+		if(comments == null){
+			comments = new ArrayList<Comment>();
+			comments.add(comment);
+		}
+		else{
+			comments.add(comment);
+		}
 	}
 
 	public UserDetail getUserDetail() {

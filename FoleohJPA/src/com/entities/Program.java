@@ -1,9 +1,12 @@
 package com.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -13,6 +16,7 @@ import javax.persistence.ManyToMany;
 public class Program {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	
 	@Column(name="program_name")
@@ -63,6 +67,16 @@ public class Program {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+	
+	public void addUser(User user){
+		if(users == null){
+			users = new ArrayList<User>();
+			users.add(user);
+		}
+		else{
+			users.add(user);
+		}
+	}
 
 	public List<Technology> getTechnologies() {
 		return technologies;
@@ -71,6 +85,16 @@ public class Program {
 	public void setTechnologies(List<Technology> technologies) {
 		this.technologies = technologies;
 	}
+	
+	public void addTechnology(Technology technology){
+		if(technologies == null){
+			technologies = new ArrayList<Technology>();
+			technologies.add(technology);
+		}
+		else{
+			technologies.add(technology);
+		}
+	}
 
 	public List<Location> getLocations() {
 		return locations;
@@ -78,6 +102,16 @@ public class Program {
 
 	public void setLocations(List<Location> locations) {
 		this.locations = locations;
+	}
+	
+	public void addLocation(Location location){
+		if(locations == null){
+			locations = new ArrayList<Location>();
+			locations.add(location);
+		}
+		else{
+			locations.add(location);
+		}
 	}
 	
 	
